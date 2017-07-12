@@ -60,6 +60,37 @@
 }
 
 </style>
+<style>
+.container {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+
+    margin-top: 6px;
+    margin-right: 6px;
+    transition: 0.4s;
+    line-height: 10px;
+
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+</style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -71,8 +102,8 @@ $(document).ready(function(){
         else{$("#menuButton").hide();$("#panel").hide();$("#hori #News").show();$("#hori #Contact").show();$("#hori #About").show();}
 });
 
-function togglingMenu(){
-  $("#panel").slideToggle("slow");
+function togglingMenu(x){
+  $("#panel").slideToggle("slow");x.classList.toggle("change");
 
 }
 $(document).ready(function(){
@@ -91,8 +122,11 @@ $(document).ready(function(){
   <li style="float: right;"><a href="#about" id="About">About</a></li>
   <li style="float: right;"><a href="#contact" id="Contact">Contact</a></li>
   <li style="float: right;"><a href="#news" id="News">News</a></li>
-  <li style="float: right;display: none;" id="menuButton"><a onclick="togglingMenu()" style="cursor: pointer;"><i class="fa fa-bars" aria-hidden="true" id="dropper"></i>
-</a></li>
+  <li style="float: right;display: none;" id="menuButton"><div class="container" onclick="togglingMenu(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+</div></li>
 </ul>
 </div>
 <div id=verti>
@@ -106,10 +140,16 @@ $(document).ready(function(){
 </div>
 </div>
 <p>Hello</p>
-<script type="text/javascript">
-  
+<div class="container" onclick="togglingMenu(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+</div>
 
-
+<script>
+function myFunction(x) {
+    x.classList.toggle("change");
+}
 </script>
 </body>
 </html>
