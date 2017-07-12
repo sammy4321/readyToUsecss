@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#hori ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#hori li {
+    float: left;
+}
+
+#hori li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#hori li a:hover {
+    background-color: red;
+}
+#verti ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #333;
+    width: 100%;
+}
+
+#verti li a {
+    display: block;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+
+}
+
+/* Change the link color on hover */
+#verti li a:hover {
+    background-color: red;
+    color: white;
+}
+#panel, #flip {
+    
+    text-align: center;
+    background-color: #f1f1f1;
+    
+}
+
+#panel {
+    
+    display: none;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript"></script>
+<script type="text/javascript"> 
+var flag= 0 ;
+$(document).ready(function(){
+    if($("html").innerWidth()<700){$("#menuButton").show();$("#hori #News").hide();$("#hori #Contact").hide();$("#hori #About").hide();}
+        else{$("#menuButton").hide();$("#panel").hide();$("#hori #News").show();$("#hori #Contact").show();$("#hori #About").show();}
+});
+
+function togglingMenu(){
+  $("#panel").slideToggle("slow");
+
+}
+$(document).ready(function(){
+    $(window).resize(function(){
+        if($("html").innerWidth()<700){$("#menuButton").show();$("#hori #News").hide();$("#hori #Contact").hide();$("#hori #About").hide();}
+        else{$("#menuButton").hide();$("#panel").hide();$("#hori #News").show();$("#hori #Contact").show();$("#hori #About").show();}
+    });
+});
+
+</script>
+</head>
+<body>
+<div id="hori">
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li style="float: right;"><a href="#about" id="About">About</a></li>
+  <li style="float: right;"><a href="#contact" id="Contact">Contact</a></li>
+  <li style="float: right;"><a href="#news" id="News">News</a></li>
+  <li style="float: right;display: none;" id="menuButton"><a onclick="togglingMenu()" style="cursor: pointer;"><i class="fa fa-bars" aria-hidden="true" id="dropper"></i>
+</a></li>
+</ul>
+</div>
+<div id=verti>
+<div id="panel">
+<ul>
+  
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+</div>
+</div>
+<p>Hello</p>
+<script type="text/javascript">
+  
+
+
+</script>
+</body>
+</html>

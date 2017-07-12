@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ISTE Applicants</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+.loaderspin{
+	top:0px;
+	position: absolute;
+	background-color: gray;
+	height: 100%;width: 100%;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+<body>
+<div class="w3-container " id="displayer">
+<br>
+  <input class="w3-input w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="filterTable()"><br><br>
+  <div class="w3-display-container" ><div class="w3-display-middle" id="totalNumber"></div></div>
+
+  <table class="w3-table-all w3-margin-top w3-centered" id="myTable">
+   
+  </table>
+</div>
+
+
+
+<div class="w3-display-container loaderspin" id="loaderspinner">
+	<div class="w3-display-middle">
+		<div class="loader"></div>
+	</div>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCah7RzkQAUQNz3-NbIJjEaDQuCD9-9Tz4",
+    authDomain: "databasetry-d546a.firebaseapp.com",
+    databaseURL: "https://databasetry-d546a.firebaseio.com",
+    projectId: "databasetry-d546a",
+    storageBucket: "databasetry-d546a.appspot.com",
+    messagingSenderId: "563514498034"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+  //var userDataRef = firebase.database().ref("/users");
+  firebase.database().ref("users").on("value", function(snapshot){
+  	var x = "<tr><th>Name</th><th>Roll Number</th></tr>";
+  	var tot=0;
+  	snapshot.forEach(function(childSnapshot) {
+        // key
+        var key = childSnapshot.key;
+        // value, could be object
+        var namme = childSnapshot.val().username;
+  		var rollno = childSnapshot.val().RollNumber;
+  		x=x+"<tr><td>"+namme+"</td><td>"+rollno+"</td></tr>";tot++;
+    });
+    document.getElementById("myTable").innerHTML=x;
+    document.getElementById("totalNumber").innerHTML="Total Number of Applicants : "+tot;
+    document.getElementById("loaderspinner").className += " w3-hide";
+
+   
+
+  });
+  
+
+
+  function filterTable() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+</script>
+</body>
+</html>
