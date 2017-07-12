@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scroll</title>
+<style>
+.test {
+    background-color: yellow;
+}
+.pos{
+	position: fixed;
+	top: 0px;
+}
+</style>
+</head>
+<body style="height:1500px">
+
+<p id="ontop">Scroll down this page</p>
+
+<p id="myP" style="background-color: red;margin-top: 0px;width: 100%">When you have scrolled 50 pixels from the top of this page, add the class "test" (yellow background color) to this paragraph. Scroll up again to remove the class.
+</p>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+
+function myFunction() {
+    if (document.body.scrollTop > document.getElementById('ontop').getBoundingClientRect().height || document.documentElement.scrollTop > document.getElementById('ontop').getBoundingClientRect().height) {
+        document.getElementById("myP").className = "pos";
+    } else {
+        document.getElementById("myP").className = "";
+    }
+}
+</script>
+
+</body>
+</html>

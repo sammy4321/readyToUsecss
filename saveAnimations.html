@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.rotatetor{transform:rotate(-45deg);}
+
+
+button:focus {outline:none;}
+button::-moz-focus-inner {border:0;}
+
+
+</style>
+<body>
+
+<div class="w3-container">
+
+<h2>Accordions</h2>
+<p>An accordion is used to show (and hide) HTML content:</p>
+  
+<div class="w3-display-container">
+<button href="javascript:void(0)" class="w3-button w3-circle w3-blue w3-hover-grey w3-display-bottomright" onclick="myfunc('Demo1')"><i class="fa fa-plus " aria-hidden="true" id="abcd"></i>
+</button>
+<div id="Demo1" class="w3-container w3-hide ">
+  <h4>Section 1</h4>
+  <p>Some text..</p>
+</div>
+</div>
+
+</div>
+<script>
+var flag=0;
+function myfunc(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+    var y=document.getElementById("abcd");
+    if(flag==0){
+    var pos=0;
+    var id=setInterval(frame,1);
+    function frame(){
+    if(pos==45){clearInterval(id);}
+    else{y.style.transform='rotate('+pos+'deg)';pos++;}
+    
+    }
+    flag=1;
+    }
+    else if(flag==1){
+    var pos=45;
+    var id=setInterval(frame,1);
+    function frame(){
+    if(pos==0){clearInterval(id);}
+    else{y.style.transform='rotate('+pos+'deg)';pos--;}
+    
+    }
+    flag=0;
+    }
+}
+</script>
+
+
+
+<div class="w3-container w3-display-left">
+<button href="javascript:void(0)" class="w3-button w3-circle w3-blue w3-hover-grey " onclick="clicked()"><i class="fa fa-plus " aria-hidden="true" id="abcd"></i>
+</button>
+</div>
+
+<script>
+
+function myFunction() {
+    var x = document.getElementById("demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+    var y=document.getElementById("homelogo");
+    if (y.className.indexOf("rotatetor") == -1) {
+        y.className += "rotatetor";
+        
+    } else { 
+        y.className = y.className.replace("rotatetor", "");
+    }
+}
+function clicked(){
+  var y=document.getElementById("abcd");
+    if(flag==0){
+    var pos=0;
+    var id=setInterval(frame,1);
+    function frame(){
+    if(pos==45){clearInterval(id);}
+    else{y.style.transform='rotate('+pos+'deg)';pos++;}
+    
+    }
+    flag=1;
+    }
+    else if(flag==1){
+    var pos=45;
+    var id=setInterval(frame,1);
+    function frame(){
+    if(pos==0){clearInterval(id);}
+    else{y.style.transform='rotate('+pos+'deg)';pos--;}
+    
+    }
+    flag=0;
+    }
+    
+
+}
+</script>
+
+</body>
+</html>

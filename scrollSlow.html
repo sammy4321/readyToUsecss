@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    width: 5000px;
+    height:5000px;
+}
+</style>
+</head>
+<body>
+
+<p>Click the button to scroll the document window to 500 pixels horizontally.</p>
+
+<button onclick="scrollWin()">Click me to scroll horizontally!</button><br><br>
+<p style="height:2000px">Click the button to scroll the document window to 500 pixels horizontally.</p>
+<p id="down">Down</p>
+
+<script>
+function scrollWin() {
+var pos = 0;
+var to=document.getElementById("down").offsetTop;;
+var id=setInterval(frame,0.01);
+function frame(){
+    if(pos>=to){clearInterval(id);}
+    else
+    {window.scrollTo(0, pos);pos=pos+10;}
+    }
+}
+</script>
+
+</body>
+</html>
